@@ -116,7 +116,7 @@ jobs:
       - name: Push to DockerHub
         uses: docker/build-push-action@v4
         with:
-          context: ./gateway/
+          context: ./nginx/
           push: true
           tags: evgenyklyukin/kittygram_gateway:latest
   deploy:
@@ -151,6 +151,7 @@ jobs:
           sudo docker compose -f docker-compose.production.yml up -d
           sudo docker compose -f docker-compose.production.yml exec backend python manage.py migrate
           sudo docker compose -f docker-compose.production.yml exec backend python manage.py collectstatic --no-input
+          sudo docker compose -f docker-compose.production.yml exec backend cp -r /app/collected_static/. /staticfiles/
   send_message:
     runs-on: ubuntu-latest
     needs: deploy
