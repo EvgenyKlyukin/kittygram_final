@@ -16,7 +16,7 @@ services:
     image: evgenyklyukin/kittygram_backend
     env_file: .env
     volumes:
-      - static_volume:/backend_static
+      - static_volume:/app/collected_static
       - media_volume:/backend_media
   
   frontend:
