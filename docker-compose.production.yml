@@ -1,36 +1,42 @@
 version: '3'
 
 volumes:
-  pg_data_production:
-  static_volume:
-  media_volume:
+  pg_data:
+  static:
+  media:
 
 services:
   db:
     image: postgres:13.10
+    container_name: db
     env_file: .env
     volumes:
-      - pg_data_production:/var/lib/postgresql/data
-  
+      - pg_data:/var/lib/postgresql/data
   backend:
     image: evgenyklyukin/kittygram_backend
+    container_name: kittygram_backend
     env_file: .env
     volumes:
-      - static_volume:/backend_static/
-      - media_volume:/backend_media/
-  
+      - static:/backend_static
+      - media:/media
+    depends_on:
+      - db
   frontend:
     image: evgenyklyukin/kittygram_frontend
+    container_name: kittygram_frontend
     env_file: .env
-    command: cp -r /app/build/. /frontend_static/
+    command: cp -r /app/build/. /static/
     volumes:
-      - static_volume:/frontend_static/
+      - static:/static/
   
   gateway:
     image: evgenyklyukin/kittygram_gateway
+    container_name: kittygram_gateway
     env_file: .env
     ports:
       - 9000:80
     volumes:
-      - static_volume:/staticfiles/
-      - media_volume:/media/
+      - static:/static/
+      - media:/media/
+    depends_on:
+      - backend
