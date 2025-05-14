@@ -37,5 +37,5 @@ services:
       - backend
       - frontend
     volumes:
-      - static:/static
+      - static:/staticfiles
       - media:/media
