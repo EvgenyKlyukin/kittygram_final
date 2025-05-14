@@ -16,18 +16,19 @@ services:
     image: evgenyklyukin/kittygram_backend
     container_name: kittygram_backend
     env_file: .env
+    command: cp -r /app/collected_static/. /backend_static/static/
     volumes:
-      - static:/backend_static
-      - media:/media
+      - static:/backend_static/
+      - media:/media/
     depends_on:
       - db
   frontend:
     image: evgenyklyukin/kittygram_frontend
     container_name: kittygram_frontend
     env_file: .env
-    command: cp -r /app/build/. /static/
+    command: cp -r /app/build/. /frontend_static/
     volumes:
-      - static:/static/
+      - static:/frontend_static/
   
   gateway:
     image: evgenyklyukin/kittygram_gateway
@@ -36,7 +37,7 @@ services:
     ports:
       - 9000:80
     volumes:
-      - static:/static/
+      - static:/staticfiles/
       - media:/media/
     depends_on:
       - backend
