@@ -5,7 +5,7 @@
 ![GitHub top language](https://img.shields.io/github/languages/top/EvgenyKlyukin/kittygram_final)
 ![GitHub Repo stars](https://img.shields.io/github/stars/EvgenyKlyukin/kittygram_final)
 ![GitHub issues](https://img.shields.io/github/issues/EvgenyKlyukin/kittygram_final)
-![Last deploy](https://img.shields.io/github/actions/workflow/status/EvgenyKlyukin/kittygram_final/main.yml?label=last%20deploy)
+![Build Status](https://github.com/EvgenyKlyukin/kittygram_final/actions/workflows/main.yml/badge.svg)
 
 Kittygram - это социальная сеть для обмена фотографиями котиков. Проект включает:
 - Бэкенд на Django (REST API)
