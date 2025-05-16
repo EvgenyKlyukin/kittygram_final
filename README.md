@@ -7,14 +7,14 @@
 ![GitHub issues](https://img.shields.io/github/issues/EvgenyKlyukin/kittygram_final)
 ![Build Status](https://github.com/EvgenyKlyukin/kittygram_final/actions/workflows/main.yml/badge.svg)
 
-Kittygram - это социальная сеть для обмена фотографиями котиков. Проект включает:
-- Бэкенд на Django (REST API)
-- Фронтенд на React
-- Базу данных PostgreSQL
-- Nginx в качестве reverse proxy
+Kittygram is a social network for sharing cat pictures. The project includes:
+- Backend on Django (REST API)
+- Frontend on React
+- PostgreSQL database
+- Nginx as a reverse proxy
 
 ## Project status
-Данный проект является заключительным в рамках 17 спринт (Yandex Практикум). Проект находится в активной разработке.
+This project was the final assignment in Sprint 17 of Yandex Practicum. The project was completed in May 2025.
 
 ## Table of contents
 - [Tech stack](#tech-stack)
@@ -37,24 +37,24 @@ Kittygram - это социальная сеть для обмена фотог�
 - **CI/CD**: GitHub Actions
 
 ## Installation
-1. Клонируйте репозиторий:
+1. Clone the repository:
 ```bash
 git clone https://github.com/EvgenyKlyukin/kittygram_final.git
 cd kittygram_final
 ```
-2. Создайте файл .env в корне проекта на основе .env.example:
+2. Create a .env file in the project root based on .env.example:
 ```bash
 cp .env.example .env
 ```
-3. Запустите проект с помощью Docker Compose:
+3. Run the project using Docker Compose:
 ```bash
 docker-compose up -d --build
 ```
-4. Примените миграции:
+4. Apply migrations:
 ```bash
 docker-compose exec backend python manage.py migrate
 ```
-5. Соберите статику:
+5. Collect static files:
 ```bash
 docker-compose exec backend python manage.py collectstatic
 ```
@@ -62,7 +62,7 @@ docker-compose exec backend python manage.py collectstatic
 ## Using
 
 ### Configuration
-Для настройки проекта создайте файл .env со следующими переменными:
+To configure the project, create a .env file with the following variables:
 ```ini
 POSTGRES_DB=postgres_db
 POSTGRES_USER=postgres_user
@@ -77,38 +77,34 @@ USE_SQLITE=False
 ```
 
 ### Data
-Проект поддерживает работу с двумя типами СУБД:
-- **PostgreSQL** (рекомендуется для production)
-- **SQLite3** (удобен для локальной разработки)
+The project supports two database management systems:
+- **PostgreSQL** (recommended for production)
+- **SQLite3** (convenient for local development)
 
-Тип используемой СУБД определяется переменной USE_SQLITE в файле .env:
+The database type is determined by the USE_SQLITE variable in the .env file:
 ```ini
-# Для использования SQLite (значение 'True')
+# For SQLite usage (set to 'True')
 USE_SQLITE=True
 
-# Для использования PostgreSQL (значение 'False' или отсутствие переменной)
+# For PostgreSQL usage (set to 'False' or omit the variable)
 USE_SQLITE=False
 ```
-При USE_SQLITE=True проект будет использовать встроенную SQLite3 БД. Файл базы данных db.sqlite3 будет создан автоматически в директории backend.
+When USE_SQLITE=True, the project will use the built-in SQLite3 database. The database file db.sqlite3 will be automatically created in the backend directory.
 
-После первого запуска выполните:
+After the first launch, execute:
 ```bash
 docker-compose exec backend python manage.py migrate
 ```
 
 ### API
-API доступно по адресу /api/.
+The API is available at: /api/
 
 ## Tests
-Для запуска тестов:
+To run tests:
 ```bash
 docker-compose exec backend python manage.py test
 docker-compose exec frontend npm test
 ```
 
 ## Authors
-- [Evgeny Klyukin](https://github.com/EvgenyKlyukin) — основной разработчик.
-
-## Links
-- [Исходный проект на GitHub](https://github.com/yandex-praktikum/kittygram_final)
-- [Документация Django](https://docs.djangoproject.com/en/5.2/)
+- [Evgeny Klyukin](https://github.com/EvgenyKlyukin) — lead developer.
